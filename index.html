@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hướng dẫn cài DeskIn trên macOS</title>
+  <meta name="description" content="Hướng dẫn cài DeskIn trên macOS từng bước, có ảnh minh họa, giao diện đơn giản phù hợp đăng web và GitHub Pages." />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --radius: 18px;
+      --max: 980px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .hero {
+      padding: 48px 0 28px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .intro, .tips, .faq-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .intro {
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .intro img {
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+
+    .section-title {
+      margin: 34px 0 16px;
+      font-size: 28px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      align-items: center;
+    }
+
+    .step-media img {
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .step p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .step ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .step li + li { margin-top: 6px; }
+
+    .tips {
+      margin-top: 28px;
+      padding: 22px;
+    }
+
+    .tips ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      margin-bottom: 36px;
+    }
+
+    .faq-box {
+      padding: 18px 20px;
+    }
+
+    .faq-box h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .faq-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 0 36px;
+    }
+
+    @media (max-width: 860px) {
+      .intro-grid, .step {
+        grid-template-columns: 1fr;
+      }
+      .step-media { order: -1; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero { padding-top: 34px; }
+      .hero p { font-size: 16px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">DeskIn macOS Guide</div>
+      <nav class="nav">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#cac-buoc">Các bước</a>
+        <a href="#luu-y">Lưu ý</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Hướng dẫn cài DeskIn trên macOS</h1>
+      <p>Bản v2 với giao diện đơn giản hơn, sáng sủa, dễ đọc và phù hợp để đăng web hoặc GitHub Pages. Trang có sẵn ảnh minh họa riêng cho từng bước.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#cac-buoc">Xem các bước</a>
+        <a class="btn" href="https://deskin.io/download/deskin-personal" target="_blank" rel="noopener noreferrer">Tải DeskIn</a>
+      </div>
+    </section>
+
+    <section id="gioi-thieu" class="intro">
+      <div class="intro-grid">
+        <div>
+          <h2>Giới thiệu nhanh</h2>
+          <p>DeskIn là phần mềm điều khiển máy tính từ xa. Trên macOS, ngoài việc cài ứng dụng, bạn còn cần cấp một số quyền hệ thống như Accessibility và Screen Recording để điều khiển máy đầy đủ.</p>
+          <ul>
+            <li>Tải đúng bản dành cho macOS.</li>
+            <li>Mở file cài đặt và thêm ứng dụng vào Applications.</li>
+            <li>Cấp quyền trong System Settings.</li>
+            <li>Đăng nhập và kết nối bằng ID thiết bị.</li>
+          </ul>
+        </div>
+        <div>
+          <img src="images/mac1.png" alt="Minh họa tải DeskIn trên macOS" />
+        </div>
+      </div>
+    </section>
+
+    <h2 id="cac-buoc" class="section-title">Các bước cài đặt</h2>
+    <section class="steps">
+      <article class="step">
+        <div class="step-content">
+          <div class="badge">Bước 1</div>
+          <h3>Tải DeskIn cho macOS</h3>
+          <p>Vào trang tải chính thức của DeskIn và chọn bản dành cho Mac để đảm bảo đúng phiên bản mới.</p>
+          <ul>
+            <li>Mở website DeskIn.</li>
+            <li>Chọn bản macOS.</li>
+            <li>Chờ file tải xong.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <img src="images/mac1.png" alt="Bước 1 tải DeskIn cho macOS" />
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-content">
+          <div class="badge">Bước 2</div>
+          <h3>Mở file cài đặt .dmg</h3>
+          <p>Sau khi tải xong, mở Finder và vào thư mục Downloads để chạy file cài DeskIn.</p>
+          <ul>
+            <li>Mở Finder.</li>
+            <li>Vào Downloads.</li>
+            <li>Nhấp đúp vào file DMG.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <img src="images/mac2.png" alt="Bước 2 mở file DeskIn DMG" />
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-content">
+          <div class="badge">Bước 3</div>
+          <h3>Kéo DeskIn vào Applications</h3>
+          <p>Đây là cách cài phổ biến trên macOS. Sau khi sao chép xong, bạn có thể mở DeskIn từ Applications hoặc Launchpad.</p>
+          <ul>
+            <li>Kéo biểu tượng DeskIn.</li>
+            <li>Thả vào thư mục Applications.</li>
+            <li>Mở ứng dụng lần đầu.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <img src="images/mac3.png" alt="Bước 3 kéo DeskIn vào Applications" />
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-content">
+          <div class="badge">Bước 4</div>
+          <h3>Cấp quyền cần thiết</h3>
+          <p>Để điều khiển từ xa đầy đủ, bạn cần bật các quyền mà DeskIn yêu cầu trong phần bảo mật của macOS.</p>
+          <ul>
+            <li>Mở System Settings.</li>
+            <li>Vào Privacy &amp; Security.</li>
+            <li>Bật Accessibility, Screen Recording và khi cần là Full Disk Access.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <img src="images/mac4.png" alt="Bước 4 cấp quyền cho DeskIn trên macOS" />
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-content">
+          <div class="badge">Bước 5</div>
+          <h3>Đăng nhập và kết nối</h3>
+          <p>Sau khi cài xong, mở DeskIn, đăng nhập và dùng ID của thiết bị để kết nối từ xa.</p>
+          <ul>
+            <li>Đăng nhập hoặc tạo tài khoản.</li>
+            <li>Ghi lại ID và mật khẩu.</li>
+            <li>Nhập ID máy cần kết nối.</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <img src="images/mac5.png" alt="Bước 5 đăng nhập và kết nối DeskIn" />
+        </div>
+      </article>
+    </section>
+
+    <section id="luu-y" class="tips">
+      <h2>Lưu ý khi sử dụng</h2>
+      <ul>
+        <li>Nếu chỉ xem được màn hình mà không điều khiển được, hãy kiểm tra lại quyền Accessibility và Screen Recording.</li>
+        <li>Giữ nguyên file <strong>index.html</strong> và thư mục <strong>images</strong> khi đưa lên GitHub Pages.</li>
+        <li>Chỉ chia sẻ ID và mật khẩu cho người bạn tin tưởng.</li>
+      </ul>
+    </section>
+
+    <h2 id="faq" class="section-title">Câu hỏi thường gặp</h2>
+    <section class="faq">
+      <div class="faq-box">
+        <h3>Trang này có dùng được cho GitHub Pages không?</h3>
+        <p>Có. Bạn chỉ cần đưa toàn bộ thư mục lên repo và giữ nguyên đường dẫn ảnh là chạy được.</p>
+      </div>
+      <div class="faq-box">
+        <h3>Ảnh trong trang này là ảnh gì?</h3>
+        <p>Đây là ảnh minh họa theo phong cách macOS hiện đại, phù hợp để trình bày bài hướng dẫn đẹp và đồng bộ.</p>
+      </div>
+      <div class="faq-box">
+        <h3>Có thể thay bằng ảnh chụp màn hình thật không?</h3>
+        <p>Có. Bạn chỉ cần thay file ảnh trong thư mục <strong>images</strong> và giữ nguyên tên file hiện tại.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 • DeskIn macOS Guide v2 • Giao diện đơn giản hơn để đăng web và GitHub Pages
+  </footer>
+</body>
+</html>
